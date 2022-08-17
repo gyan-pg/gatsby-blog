@@ -5,6 +5,11 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: "Sample Blog",
+    description: "Gatsbyで作成したブログサイトです。",
+    author: "xxxx",
+  },
   /* Your site config here */
-  plugins: [],
+  plugins: ["gatsby-plugin-sass"],
 }

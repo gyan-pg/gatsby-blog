@@ -1,0 +1,55 @@
+$breakpoints: (
+  "sm": "screen and (max-width: 575px)",
+  "ov": "screen and (min-width: 576px)",
+) !default;
+
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+.post-link {
+  display: grid;
+  margin: 50px 0;
+  @include mq() {
+    grid-template-columns: 1fr;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 20px 40px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  @include mq($breakpoint: ov) {
+    grid-template-columns: 280px 1fr;
+    column-gap: 24px;
+  }
+  &-body {
+    text-overflow: ellipsis;
+    overflow-wrap: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    color: #434343;
+  }
+  &-text {
+    padding: 1rem;
+  }
+  &-date {
+    color: #595959;
+  }
+  &-img {
+    width: 100%;
+    height: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    @include mq() {
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+    @include mq($breakpoint: ov) {
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 60px -10px,
+        rgba(0, 0, 0, 0.33) 0px 18px 36px -18px;
+      border-radius: 10px;
+    }
+  }
+}
